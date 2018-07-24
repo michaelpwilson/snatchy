@@ -1,16 +1,15 @@
-import { expect, should } from "chai";
+import { CrudTest }          from "./crud";
 
-let Should = should();
+import { Controller }        from '../core/controllers/Controller';
+import { TestModel }         from '../core/models/TestModel';
 
-import { Database } from '../app/database';
-import { Controller } from '../core/controllers/Controller';
-import { TestModel }  from '../core/models/TestModel';
-
-import { UserController } from '../core/controllers/User';
-
-import { CrudTest } from "./crud";
+import { UserController }    from '../core/controllers/User';
 import { CompanyController } from "../core/controllers/Company";
-import { ShopController } from "../core/controllers/Shop";
+import { ShopController }    from "../core/controllers/Shop";
+import { CategoryController } from "../core/controllers/Category";
+import { ProductController } from "../core/controllers/Product";
+import { ProductSizeController } from "../core/controllers/ProductSize";
+import { ProductOptionController } from "../core/controllers/ProductOption";
 
 new CrudTest({
   name: "Core Controller",
@@ -53,7 +52,7 @@ new CrudTest({
 });
 
 new CrudTest({
-  name: "Shops Controller",
+  name: "Shop Controller",
   controller: new ShopController()
 }, {
   company_id: 1,
@@ -71,36 +70,57 @@ new CrudTest({
   active: true
 });
 
+new CrudTest({
+  name: "Category Controller",
+  controller: new CategoryController()
+}, {
+  company_id: 1,
+  title: "Drinks",
+  subtitle: "All types of drinks",
+  description: "Blah blah blah",  
+  image: "images/image.jpg",
+  name: "Drinks"
+}, true);
+
+new CrudTest({
+  name: "Product Controller",
+  controller: new ProductController()
+}, {
+  company_id: 1,
+  name: "Coca Cola",
+  image: "images/image.jpg",
+  category: 1,
+  description: "Blah blah blah",  
+  available: true
+}, true);
+
+new CrudTest({
+  name: "Product Size Controller",
+  controller: new ProductSizeController()
+}, {
+  product_id: 1,
+  name: "Can",
+  description: "In a metal can",
+  stock: 40,
+  price: 1,
+  rrp: 2,
+  available: true
+}, true);
+
+new CrudTest({
+  name: "Product Option Controller",
+  controller: new ProductOptionController()
+}, {
+  product_id: 1,
+  name: "Straw",
+  description: "In a metal can",
+  stock: 40,
+  price: 0.20,
+  rrp: 0.30,
+  available: true
+}, true);
+
 /*
-describe('Shops', () => {
-  describe('Creating a Shop', () => {
-    it('should add to the database', done => {
-      done();
-    });
-    it('Should return a valid JWT token', done => {
-      done();
-    });
-  });
-
-  describe('Reading a Shop', () => {
-    it('should have valid properties', done => {
-      done();
-    });
-    it('Should return a valid JWT token', done => {
-      done();
-    });
-  });
-
-  describe('Updating a Shop', () => {
-    it('should update the record in the database', done => {
-      done();
-    });
-    it('Should return a valid JWT token', done => {
-      done();
-    });
-  });
-});
-
 describe('Orders', () => {
   describe('Creating an Order', () => {
     it('should add to the database', done => {

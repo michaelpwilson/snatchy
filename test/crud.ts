@@ -22,14 +22,14 @@ export class CrudTest {
       return text;
     }
   
-    constructor(opts: any, createData: any) {    
+    constructor(opts: any, createData: any, noUniques?: any) {    
       this.opts = opts;
       this.controller = opts.controller;
   
       let self = this;
     
       describe(opts.name, function () {
-        self.create(createData);
+        self.create(createData, noUniques);
         self.read(createData);
         self.update(createData);
         self.destroy(createData);
@@ -49,7 +49,7 @@ export class CrudTest {
       return createData;
     }
   
-    create(createData: any) {
+    create(createData: any, noUniques: boolean) {
       let self = this;
   
       describe('Creating', () => {
@@ -73,23 +73,26 @@ export class CrudTest {
                 }
                 resolve(data);
             }).catch((error: any) => {
+              console.log(error);
               reject(error);
             });
           });
         });
-        it('Should error when not using a unique field', () => {
-          return new Promise((resolve, reject) => {
-            let action = this.controller.create(this.createData, { attributeKeys: true });
-    
-            action.then((data: any) => {
-              reject(data);
-            }).catch((error: any) => {
-              this.createData = this.originalCreateData;
-              Should.exist(error);
-              resolve(error);
+        if(!noUniques) {
+          it('Should error when not using a unique field', () => {
+            return new Promise((resolve, reject) => {
+              let action = this.controller.create(this.createData, { attributeKeys: true });
+      
+              action.then((data: any) => {
+                reject(data);
+              }).catch((error: any) => {
+                this.createData = this.originalCreateData;
+                Should.exist(error);
+                resolve(error);
+              });
             });
           });
-        });
+        }
       });
     }
   
