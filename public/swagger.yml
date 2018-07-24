@@ -1,0 +1,1501 @@
+swagger: '2.0'
+info:
+  version: "0.0.1"
+  title: Snatchy
+  description: |
+    A service for organisations to create/manage/distribute their own API, Web app, Mobile app and website on a per shop basis.
+    
+    https://www.uplabs.com/posts/carbon-material-design-code
+paths:
+  /user:
+    post:
+      description: |
+        If authentication is successful, this endpoint will return a User.
+      parameters:
+        -
+          name: username
+          in: query
+          description: The username
+          required: true
+          type: number
+          format: double
+        -
+          name: password
+          in: query
+          description: The password associated to the username
+          required: true
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: ArrayOfCompanies
+            type: array
+            items:
+              title: Company
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /users/create:
+    post:
+      description: |
+        Creates a User
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /users/update:
+    put:
+      description: |
+        Updates a User
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /companies:
+    get:
+      description: |
+        Gets all Companies belonging to a User
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          required: true
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: ArrayOfCompanies
+            type: array
+            items:
+              title: Company
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /companies/create:
+    post:
+      description: |
+        Creates a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /companies/update:
+    put:
+      description: |
+        Updates a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /companies/delete:
+    delete:
+      description: |
+        Deletes a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /mail:
+    get:
+      description: |
+        Gets all Shops belonging to a Company
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          required: true
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: ArrayOfShops
+            type: array
+            items:
+              title: Shop
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /mail/create:
+    post:
+      description: |
+        Creates a Shop
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: App
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /mail/update:
+    put:
+      description: |
+        Updates a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /mail/delete:
+    delete:
+      description: |
+        Deletes a Shop
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /shops:
+    get:
+      description: |
+        Gets all Shops belonging to a Company
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          required: true
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: ArrayOfShops
+            type: array
+            items:
+              title: Shop
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /shops/create:
+    post:
+      description: |
+        Creates a Shop
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: App
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /shops/update:
+    put:
+      description: |
+        Updates a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /shops/delete:
+    delete:
+      description: |
+        Deletes a Shop
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /products:
+    get:
+      description: |
+        Gets all Shops belonging to a Company
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: ArrayOfProducts
+            type: array
+            items:
+              title: Product
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /products/create:
+    post:
+      description: |
+        Creates a Product
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: App
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /products/update:
+    put:
+      description: |
+        Updates a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /products/delete:
+    delete:
+      description: |
+        Deletes a Shop
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /orders:
+    get:
+      description: |
+        Gets all Orders belonging to a Shop
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: ArrayOfOrders
+            type: array
+            items:
+              title: Order
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /orders/create:
+    post:
+      description: |
+        Creates an Order
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: App
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /orders/update:
+    put:
+      description: |
+        Updates a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /orders/delete:
+    delete:
+      description: |
+        Deletes a Shop
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /customers:
+    get:
+      description: |
+        Gets all Customers belonging to a Shop
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: ArrayOfCustomers
+            type: array
+            items:
+              title: Customer
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /customers/create:
+    post:
+      description: |
+        Creates a Customer
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: App
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /customers/update:
+    put:
+      description: |
+        Updates a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /customers/delete:
+    delete:
+      description: |
+        Deletes a Shop
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /chats:
+    get:
+      description: |
+        Gets all Chats belonging to a Shop
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: ArrayOfChats
+            type: array
+            items:
+              title: Chat
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /chats/create:
+    post:
+      description: |
+        Creates a Chat
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: App
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /chats/update:
+    put:
+      description: |
+        Updates a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /chats/delete:
+    delete:
+      description: |
+        Deletes a Shop
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /offers:
+    get:
+      description: |
+        Gets all Offers belonging to a Shop
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: ArrayOfOffers
+            type: array
+            items:
+              title: Offer
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /offers/create:
+    post:
+      description: |
+        Creates an Offer
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: App
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /offers/update:
+    put:
+      description: |
+        Updates a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /offers/delete:
+    delete:
+      description: |
+        Deletes a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /servers:
+    get:
+      description: |
+        Gets all Chats belonging to a Shop
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: ArrayOfChats
+            type: array
+            items:
+              title: Chat
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /servers/create:
+    post:
+      description: |
+        Creates a Chat
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: App
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /servers/update:
+    put:
+      description: |
+        Updates a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /servers/delete:
+    delete:
+      description: |
+        Deletes a Shop
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /apps:
+    get:
+      description: |
+        Gets all Apps belonging to a Shop
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: ArrayOfApps
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /apps/create:
+    post:
+      description: |
+        Creates an App
+      parameters:
+        -
+          name: username
+          in: query
+          description: Usernme
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: App
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /apps/update:
+    put:
+      description: |
+        Updates a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /apps/delete:
+    delete:
+      description: |
+        Deletes a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /carts:
+    get:
+      description: |
+        Gets all Apps belonging to a Shop
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: ArrayOfApps
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /carts/create:
+    post:
+      description: |
+        Creates an App
+      parameters:
+        -
+          name: username
+          in: query
+          description: Usernme
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: App
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /carts/update:
+    put:
+      description: |
+        Updates a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /carts/delete:
+    delete:
+      description: |
+        Deletes a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /providers:
+    get:
+      description: |
+        Gets all Apps belonging to a Shop
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: ArrayOfApps
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /providers/create:
+    post:
+      description: |
+        Creates an App
+      parameters:
+        -
+          name: username
+          in: query
+          description: Usernme
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: App
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /providers/update:
+    put:
+      description: |
+        Updates a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /providers/delete:
+    delete:
+      description: |
+        Deletes a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /notifications:
+    get:
+      description: |
+        Gets all Apps belonging to a Shop
+      parameters:
+        -
+          name: company_id
+          in: query
+          description: The Company ID 
+          type: number
+          format: double
+        -
+          name: shop_id
+          in: query
+          description: The Shop ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: ArrayOfApps
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /notifications/create:
+    post:
+      description: |
+        Creates an App
+      parameters:
+        -
+          name: username
+          in: query
+          description: Usernme
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: App
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /notifications/update:
+    put:
+      description: |
+        Updates a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean
+  /notifications/delete:
+    delete:
+      description: |
+        Deletes a Company
+      parameters:
+        -
+          name: user_id
+          in: query
+          description: The User ID 
+          type: number
+          format: double
+      responses:
+        200:
+          description: Successful response
+          schema:
+            title: User
+            type: array
+            items:
+              title: App
+              type: object
+              properties:
+                name:
+                  type: string
+                active:
+                  type: boolean

@@ -1,0 +1,16 @@
+{
+  "dialect": "sqlite",
+  "dev": {
+    "driver": "sqlite3",
+    "filename": "./test.db"
+  },
+  "test": {
+    "driver": "sqlite3",
+    "filename": ":memory:"
+  },
+  "prod": {
+    "driver": "mysql",
+    "user": "root",
+    "password": "root"
+  }
+}
