@@ -82,7 +82,7 @@ export class Model {
                 reject("No ID given to update");
             } else {
                 this.before().then(() => {
-                    this.table.find({
+                    this.table.findOne({
                         where: {
                             id: id
                         }

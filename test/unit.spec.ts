@@ -1,14 +1,14 @@
-import { CrudTest }          from "./crud";
+import { CrudTest }                from "./crud";
 
-import { Controller }        from '../core/controllers/Controller';
-import { TestModel }         from '../core/models/TestModel';
+import { Controller }              from '../core/controllers/Controller';
+import { TestModel }               from '../core/models/TestModel';
 
-import { UserController }    from '../core/controllers/User';
-import { CompanyController } from "../core/controllers/Company";
-import { ShopController }    from "../core/controllers/Shop";
-import { CategoryController } from "../core/controllers/Category";
-import { ProductController } from "../core/controllers/Product";
-import { ProductSizeController } from "../core/controllers/ProductSize";
+import { UserController }          from '../core/controllers/User';
+import { CompanyController }       from "../core/controllers/Company";
+import { ShopController }          from "../core/controllers/Shop";
+import { CategoryController }      from "../core/controllers/Category";
+import { ProductController }       from "../core/controllers/Product";
+import { ProductSizeController }   from "../core/controllers/ProductSize";
 import { ProductOptionController } from "../core/controllers/ProductOption";
 
 new CrudTest({
