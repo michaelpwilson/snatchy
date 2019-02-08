@@ -1,4 +1,5 @@
 import * as Router from 'koa-router';
+
 import { UserController } from "../core/controllers/User";
 import { CompanyController } from '../core/controllers/Company';
 import { ShopController } from '../core/controllers/Shop';
@@ -14,7 +15,7 @@ class crudRoutes {
     name: string;
 
     constructor(name: string, controller: any) {
-        this.controller = controller;
+        this.controller = new controller();
         this.name = name;
 
         this.create();
@@ -22,6 +23,7 @@ class crudRoutes {
         this.update();
         this.destroy();
     }
+
     create() {
         router.post(`/${this.name}/create`, (ctx) => {
             return this.controller.update(ctx.params.id, {}).then(function (data: any) {
@@ -71,19 +73,14 @@ class crudRoutes {
     }
 }
 
-new crudRoutes("user", new UserController());
-new crudRoutes("company", new CompanyController());
-new crudRoutes("shop", new ShopController());
-new crudRoutes("category", new CategoryController());
-new crudRoutes("product", new ProductController());
-new crudRoutes("productSize", new ProductSizeController());
-new crudRoutes("productOption", new ProductOptionController());
-
+new crudRoutes("user", UserController);
+new crudRoutes("company", CompanyController);
+new crudRoutes("shop", ShopController);
+new crudRoutes("category", CategoryController);
+new crudRoutes("product", ProductController);
+new crudRoutes("productSize", ProductSizeController);
+new crudRoutes("productOption", ProductOptionController);
 
 router.get('/healthcheck', async ctx => ctx.body = 'OK');
-
-router.post('/test', async ctx => {
-    ctx.body = 'OK';
-});
 
 export const routes = router.routes();
