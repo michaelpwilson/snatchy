@@ -1,12 +1,5 @@
 import * as Router from 'koa-router';
-
-import { UserController } from "../core/controllers/User";
-import { CompanyController } from '../core/controllers/Company';
-import { ShopController } from '../core/controllers/Shop';
-import { CategoryController } from '../core/controllers/Category';
-import { ProductController } from '../core/controllers/Product';
-import { ProductSizeController } from '../core/controllers/ProductSize';
-import { ProductOptionController } from '../core/controllers/ProductOption';
+import * as fs     from 'fs';
 
 const router = new Router();
 
@@ -73,13 +66,29 @@ class crudRoutes {
     }
 }
 
-new crudRoutes("user", UserController);
-new crudRoutes("company", CompanyController);
-new crudRoutes("shop", ShopController);
-new crudRoutes("category", CategoryController);
-new crudRoutes("product", ProductController);
-new crudRoutes("productSize", ProductSizeController);
-new crudRoutes("productOption", ProductOptionController);
+var controllerDirectory = __dirname + "/../core/controllers";
+
+fs.readdir(controllerDirectory, (error, files) => {
+    if(error) {
+        console.error("Could not find any controllers");
+    } else {
+        files.forEach(file => {
+            var name = file.replace(/.ts/g, "");
+
+            if(name !== "Controller") {
+                var controllerName = name + "Controller",
+                    routeName      = getRouteName(name),
+                    controller     = require(controllerDirectory + "/" +  name);
+
+                new crudRoutes(routeName, controller[controllerName]);
+            }
+        });
+    }
+})
+
+function getRouteName(name: string) {
+    return name.charAt(0).toLowerCase() + name.slice(1);
+}
 
 router.get('/healthcheck', async ctx => ctx.body = 'OK');
 
