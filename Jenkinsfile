@@ -7,6 +7,7 @@ pipeline {
                 docker { image 'node:10.15-alpine' }
             }
             steps {
+                sh "npm install"
                 sh "npm test"
             }
         }
